@@ -1,0 +1,330 @@
+<html>
+<head>
+<script type="text/javascript" src="js/piano.js"></script>
+
+  <title>Play Piano</title>
+  <style>
+  /**
+   * Pure CSS3 Piano by Taufik Nurrohman
+   * On: 1 December 2011
+   * URL: http://hompimpaalaihumgambreng.blogspot.com/
+   * Note: This experiment is under the God Almighty License.
+   * Please do not replace or remove the attribution above if you want to save/modify this project legally.
+   * Good luck!
+   */
+
+  * {
+    margin:0px;
+    padding:0px;
+    list-style:none;
+  }
+
+  body {
+    background:#666;
+    background:-webkit-radial-gradient(bottom left,cover,#999,#666);
+    background:-moz-radial-gradient(bottom left,cover,#999,#666);
+    background:-ms-radial-gradient(bottom left,cover,#999,#666);
+    background:-o-radial-gradient(bottom left,cover,#999,#666);
+    background:radial-gradient(bottom left,cover,#999,#666);
+    /*height:500px;*/
+  }
+
+  /* Piano Wrapper */
+  #p-wrapper {
+    background:#000;
+    background:-webkit-linear-gradient(-60deg,#000,#333,#000,#666,#333 70%);
+    background:-moz-linear-gradient(-60deg,#000,#333,#000,#666,#333 70%);
+    background:-ms-linear-gradient(-60deg,#000,#333,#000,#666,#333 70%);
+    background:-o-linear-gradient(-60deg,#000,#333,#000,#666,#333 70%);
+    background:linear-gradient(-60deg,#000,#333,#000,#666,#333 70%);
+    width:1440px;
+    overflow-x: scroll;
+    position:relative;
+    left:0px;
+    -webkit-box-shadow:0 2px 0px #666,0 3px 0px #555,0 4px 0px #444,0 6px 6px #000,inset 0 -1px 1px rgba(255,255,255,0.5),inset 0 -4px 5px #000;
+    -moz-box-shadow:0 2px 0px #666,0 3px 0px #555,0 4px 0px #444,0 6px 6px #000,inset 0 -1px 1px rgba(255,255,255,0.5),inset 0 -4px 5px #000;
+    box-shadow:0 2px 0px #666,0 3px 0px #555,0 4px 0px #444,0 6px 6px #000,inset 0 -1px 1px rgba(255,255,255,0.5),inset 0 -4px 5px #000;
+    border:2px solid #333;
+    -webkit-border-radius:0 0 5px 5px;
+    -moz-border-radius:0 0 5px 5px;
+    border-radius:0 0 5px 5px;
+    -webkit-animation:taufik 2s;
+    -moz-animation:taufik 2s;
+    animation:taufik 2s;
+  }
+
+  /* Tuts */
+  ul#piano {
+    display:block;
+    width:100%;
+    height:240px;
+    border-top:2px solid #222;
+  }
+
+  ul#piano li {
+    list-style:none;
+    float:left;
+    display:inline;
+    background:#aaa;
+    width:40px;
+    position:relative;
+  }
+
+  ul#piano li div.anchor {
+    display:block;
+    height:220px;
+    background:#fff;
+    background:-webkit-linear-gradient(-30deg,#f5f5f5,#fff);
+    background:-moz-linear-gradient(-30deg,#f5f5f5,#fff);
+    background:-ms-linear-gradient(-30deg,#f5f5f5,#fff);
+    background:-o-linear-gradient(-30deg,#f5f5f5,#fff);
+    background:linear-gradient(-30deg,#f5f5f5,#fff);
+    border:1px solid #ccc;
+    -webkit-box-shadow:inset 0 1px 0px #fff,inset 0 -1px 0px #fff,inset 1px 0px 0px #fff,inset -1px 0px 0px #fff,0 4px 3px rgba(0,0,0,0.7);
+    -moz-box-shadow:inset 0 1px 0px #fff,inset 0 -1px 0px #fff,inset 1px 0px 0px #fff,inset -1px 0px 0px #fff,0 4px 3px rgba(0,0,0,0.7);
+    box-shadow:inset 0 1px 0px #fff,inset 0 -1px 0px #fff,inset 1px 0px 0px #fff,inset -1px 0px 0px #fff,0 4px 3px rgba(0,0,0,0.7);
+    -webkit-border-radius:0 0 3px 3px;
+    -moz-border-radius:0 0 3px 3px;
+    border-radius:0 0 3px 3px;
+  }
+
+
+  ul#piano li div.anchor:active {
+    -webkit-box-shadow:0 2px 2px rgba(0,0,0,0.4);
+    -moz-box-shadow:0 2px 2px rgba(0,0,0,0.4);
+    box-shadow:0 2px 2px rgba(0,0,0,0.4);
+    position:relative;
+    top:2px;
+    height:216px;
+  }
+
+
+/*
+  ul#piano li div.anchor:active:before {
+    content:"";
+    width:0px;
+    height:0px;
+    border-width:216px 5px 0px;
+    border-style:solid;
+    border-color:transparent transparent transparent rgba(0,0,0,0.1);
+    position:absolute;
+    left:0px;
+    top:0px;
+  }
+*/
+/*
+  ul#piano li div.anchor:active:after {
+    content:"";
+    width:0px;
+    height:0px;
+    border-width:216px 5px 0px;
+    border-style:solid;
+    border-color:transparent rgba(0,0,0,0.1) transparent transparent;
+    position:absolute;
+    right:0px;
+    top:0px;
+  }
+*/
+
+  /* Black Tuts */
+  ul#piano li span {
+    position:absolute;
+    top:0px;
+    left:-12px;
+    width:20px;
+    height:120px;
+    background:#333;
+    background:-webkit-linear-gradient(-20deg,#333,#000,#333);
+    background:-moz-linear-gradient(-20deg,#333,#000,#333);
+    background:-ms-linear-gradient(-20deg,#333,#000,#333);
+    background:-o-linear-gradient(-20deg,#333,#000,#333);
+    background:linear-gradient(-20deg,#333,#000,#333);
+    z-index:10;
+    border-width:1px 2px 7px;
+    border-style:solid;
+    border-color:#666 #222 #111 #555;
+    -webkit-box-shadow:inset 0px -1px 2px rgba(255,255,255,0.4),0 2px 3px rgba(0,0,0,0.4);
+    -moz-box-shadow:inset 0px -1px 2px rgba(255,255,255,0.4),0 2px 3px rgba(0,0,0,0.4);
+    box-shadow:inset 0px -1px 2px rgba(255,255,255,0.4),0 2px 3px rgba(0,0,0,0.4);
+    -webkit-border-radius:0 0 2px 2px;
+    -moz-border-radius:0 0 2px 2px;
+    border-radius:0 0 2px 2px;
+  }
+
+  ul#piano li span:active {
+    border-bottom-width:2px;
+    height:123px;
+    -webkit-box-shadow:inset 0px -1px 1px rgba(255,255,255,0.4),0 1px 0px rgba(0,0,0,0.8),0 2px 2px rgba(0,0,0,0.4),0 -1px 0px #000;
+    -moz-box-shadow:inset 0px -1px 1px rgba(255,255,255,0.4),0 1px 0px rgba(0,0,0,0.8),0 2px 2px rgba(0,0,0,0.4),0 -1px 0px #000;
+    box-shadow:inset 0px -1px 1px rgba(255,255,255,0.4),0 1px 0px rgba(0,0,0,0.8),0 2px 2px rgba(0,0,0,0.4),0 -1px 0px #000;
+  }
+
+/*
+  ul#piano li li {
+    width:150px;
+    height:auto;
+    display:block;
+    float:none;
+    background:transparent;
+  }
+*/
+
+/*
+  ul#piano li:hover ul {
+    visibility:visible;
+    opacity:1;
+    margin-top:15px;
+  }
+*/
+/*
+  .clear {
+    clear:both;
+  }
+*/
+
+.keyname{
+    position: absolute;
+    bottom: 0;
+}
+span .keyname{
+    color: white;
+}
+
+#score{
+    width: 1440px;
+    min-height: 100px;
+    max-height: 200px;
+    overflow-y: scroll;
+}
+.tracklane {
+    float:left;
+    display:inline;
+    background:#aaa;
+    width:38px;
+    height: 100%;
+    position:relative;
+    border: 1px solid white;
+}
+
+.white-right-hand-note{
+    position: absolute;
+    width: 100%;
+    background: #AAAA00;
+}
+
+.black-right-hand-note{
+    position: absolute;
+    right:-12px;
+    width:20px;
+    z-index: 1;
+    background: #777700;
+}
+
+.white-left-hand-note{
+    position: absolute;
+    width: 100%;
+    background: #8888FF;
+}
+
+.black-left-hand-note{
+    position: absolute;
+    right:-12px;
+    z-index: 1;
+    width:20px;
+    background: #2222FF;
+}
+
+  </style>
+</head>
+<body>
+
+<div id="score">
+    <div class="tracklane 1C">C</div>
+    <div class="tracklane 1D">D</div>
+    <div class="tracklane 1E">E</div>
+    <div class="tracklane 1F">F</div>
+    <div class="tracklane 1G">G</div>
+    <div class="tracklane 1A">A</div>
+    <div class="tracklane 1B">B</div>
+
+    <div class="tracklane 2C">C</div>
+    <div class="tracklane 2D">D</div>
+    <div class="tracklane 2E">E</div>
+    <div class="tracklane 2F">F</div>
+    <div class="tracklane 2G">G</div>
+    <div class="tracklane 2A">A</div>
+    <div class="tracklane 2B">B</div>
+
+    <div class="tracklane 3C">C</div>
+    <div class="tracklane 3D">D</div>
+    <div class="tracklane 3E">E</div>
+    <div class="tracklane 3F">F</div>
+    <div class="tracklane 3G">G</div>
+    <div class="tracklane 3A">A</div>
+    <div class="tracklane 3B">B</div>
+
+    <div class="tracklane 4C">C</div>
+    <div class="tracklane 4D">D</div>
+    <div class="tracklane 4E">E</div>
+    <div class="tracklane 4F">F</div>
+    <div class="tracklane 4G">G</div>
+    <div class="tracklane 4A">A</div>
+    <div class="tracklane 4B">B</div>
+
+    <div class="tracklane 5C">C</div>
+    <div class="tracklane 5D">D</div>
+    <div class="tracklane 5E">E</div>
+    <div class="tracklane 5F">F</div>
+    <div class="tracklane 5G">G</div>
+    <div class="tracklane 5A">A</div>
+    <div class="tracklane 5B">B</div>
+
+</div>
+
+    <div id="p-wrapper">
+        <ul id="piano">
+            <li><div class="anchor"><div class='keyname'>C</div></div></li>
+            <li><div class="anchor"><div class='keyname'>D</div></div><span><div class='keyname'>C#</div></span></li>
+            <li><div class="anchor"><div class='keyname'>E</div></div><span><div class='keyname'>D#</div></span></li>
+            <li><div class="anchor"><div class='keyname'>F</div></div></li>
+            <li><div class="anchor"><div class='keyname'>G</div></div><span><div class='keyname'>F#</div></span></li>
+            <li><div class="anchor"><div class='keyname'>A</div></div><span><div class='keyname'>G#</div></span></li>
+            <li><div class="anchor"><div class='keyname'>B</div></div><span><div class='keyname'>A#</div></span></li>
+
+            <li><div class="anchor"><div class='keyname'>C</div></div></li>
+            <li><div class="anchor"><div class='keyname'>D</div></div><span><div class='keyname'>C#</div></span></li>
+            <li><div class="anchor"><div class='keyname'>E</div></div><span><div class='keyname'>D#</div></span></li>
+            <li><div class="anchor"><div class='keyname'>F</div></div></li>
+            <li><div class="anchor"><div class='keyname'>G</div></div><span><div class='keyname'>F#</div></span></li>
+            <li><div class="anchor"><div class='keyname'>A</div></div><span><div class='keyname'>G#</div></span></li>
+            <li><div class="anchor"><div class='keyname'>B</div></div><span><div class='keyname'>A#</div></span></li>
+
+            <li><div class="anchor"><div class='keyname'>C</div></div></li>
+            <li><div class="anchor"><div class='keyname'>D</div></div><span><div class='keyname'>C#</div></span></li>
+            <li><div class="anchor"><div class='keyname'>E</div></div><span><div class='keyname'>D#</div></span></li>
+            <li><div class="anchor"><div class='keyname'>F</div></div></li>
+            <li><div class="anchor"><div class='keyname'>G</div></div><span><div class='keyname'>F#</div></span></li>
+            <li><div class="anchor"><div class='keyname'>A</div></div><span><div class='keyname'>G#</div></span></li>
+            <li><div class="anchor"><div class='keyname'>B</div></div><span><div class='keyname'>A#</div></span></li>
+
+            <li><div class="anchor"><div class='keyname'>C</div></div></li>
+            <li><div class="anchor"><div class='keyname'>D</div></div><span><div class='keyname'>C#</div></span></li>
+            <li><div class="anchor"><div class='keyname'>E</div></div><span><div class='keyname'>D#</div></span></li>
+            <li><div class="anchor"><div class='keyname'>F</div></div></li>
+            <li><div class="anchor"><div class='keyname'>G</div></div><span><div class='keyname'>F#</div></span></li>
+            <li><div class="anchor"><div class='keyname'>A</div></div><span><div class='keyname'>G#</div></span></li>
+            <li><div class="anchor"><div class='keyname'>B</div></div><span><div class='keyname'>A#</div></span></li>
+
+            <li><div class="anchor"><div class='keyname'>C</div></div></li>
+            <li><div class="anchor"><div class='keyname'>D</div></div><span><div class='keyname'>C#</div></span></li>
+            <li><div class="anchor"><div class='keyname'>E</div></div><span><div class='keyname'>D#</div></span></li>
+            <li><div class="anchor"><div class='keyname'>F</div></div></li>
+            <li><div class="anchor"><div class='keyname'>G</div></div><span><div class='keyname'>F#</div></span></li>
+            <li><div class="anchor"><div class='keyname'>A</div></div><span><div class='keyname'>G#</div></span></li>
+            <li><div class="anchor"><div class='keyname'>B</div></div><span><div class='keyname'>A#</div></span></li>
+
+        </ul>
+    </div>
+
+</body>
+</html>
