@@ -55,9 +55,27 @@ window.onload = () ->
              2B w R 33 1
              3E w R 33 2
 
-             2D w L 35 2
+             2D w L 35 3
              2B w R 35 1
              3D w R 35 1
+
+             2B w R 37 1
+             3G w R 37 1
+
+             1A w L 39 4
+             2D w L 41 2
+             3C w R 39 4
+             3F b R 39 4
+
+             3D w R 43 1
+             3D w R 45 1
+
+             2D w L 46 4
+             3C w R 46 1
+             3E w R 46 1
+             2F b L 48 2
+             3C w R 48 2
+             3D w R 48 2
           '''
   add_note = (scoreline) ->
     tokens = scoreline.split ' '
