@@ -77,6 +77,10 @@ window.onload = () ->
              3C w R 48 2
              3D w R 48 2
           '''
+  # This is how tall the score needs to be so the score needs to be as tall as
+  # the highest note, that is the note with with a start+length larger than any
+  # other.
+  max_note_height = 0
   add_note = (scoreline) ->
     tokens = scoreline.split ' '
     if tokens.length < 5
@@ -95,6 +99,9 @@ window.onload = () ->
     note.appendChild keyname
     keyname.textContent = notename
     keyname.className = 'keyname'
+    max_note_height = Math.max max_note_height, Number(start) + Number(length)
   for scoreline in score.split '\n'
     add_note scoreline
+  score = document.getElementById 'score'
+  score.style.height = max_note_height + 'em'
   return
