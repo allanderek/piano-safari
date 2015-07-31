@@ -26,7 +26,6 @@
     background:-ms-radial-gradient(bottom left,cover,#999,#666);
     background:-o-radial-gradient(bottom left,cover,#999,#666);
     background:radial-gradient(bottom left,cover,#999,#666);
-    /*height:500px;*/
   }
 
   /* Piano Wrapper */
@@ -236,9 +235,19 @@ span .keyname{
     background: #2222FF;
 }
 
+#user-controls{
+    z-index: 1;
+    width: 10%;
+    margin: 0 auto;
+}
   </style>
 </head>
 <body>
+
+<div id="user-controls">
+    <button id="toggle-reading" onclick="toggleReading();">Start</button>
+    <input id="bpm-input" value="60" style="width:4em;"></input>
+</div>
 
 <div id="score-container">
 <div id="score">

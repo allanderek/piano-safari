@@ -105,3 +105,28 @@ window.onload = () ->
   score = document.getElementById 'score'
   score.style.height = max_note_height + 'em'
   return
+
+
+timerId = null
+stop_reading = (button) ->
+  clearInterval timerId
+  button.textContent = "Start"
+
+toggleReading = () ->
+  button = document.getElementById 'toggle-reading'
+  if button.textContent == "Stop"
+    stop_reading button
+  else
+    bpm_input = document.getElementById 'bpm-input'
+    millieseconds = 1.0 / (bpm_input.value / 60000.0)
+    timerId = setInterval run, millieseconds
+    button.textContent = "Stop"
+
+update = () ->
+  score_con = document.getElementById 'score-container'
+  score_con.scrollTop += 50
+  # if result is false
+  #  toggleReading()
+
+run = () ->
+  update()
