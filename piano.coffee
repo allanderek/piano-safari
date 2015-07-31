@@ -76,6 +76,56 @@ window.onload = () ->
              2F b L 48 2
              3C w R 48 2
              3D w R 48 2
+
+             3C w R 50 1
+             3A w R 50 1
+
+             1G w L 52 3
+             2B w R 52 3
+             3G w R 52 3
+
+             2D w L 55 1
+
+             3D w R 59 1
+             3D w R 61 1
+
+             2B w L 62 2
+             3G w R 62 2
+             4D w R 62 2
+
+             2G w L 64 2
+             3D w R 64 2
+             3B w R 64 1
+
+             1B w L 67 2
+             3D w R 67 1
+             3G w R 67 1
+
+             2C w L 69 4
+             3D w R 69 3
+             3F b R 69 3
+             3C w R 72 1
+             3E w R 72 1
+
+             1A w L 77 3
+             3E w L 77 1
+             4C w L 77 1
+             3E w L 79 1
+             4C w L 79 1
+
+             2D w L 80 5
+             3D w R 80 1
+             3B w R 80 1
+             2B w R 83 1
+             3G w R 83 1
+
+             1D w L 85 2
+             3C w R 85 1
+             3A w R 85 1
+
+             1G w L 87 9
+             2B w R 87 9
+             3G w R 87 9
           '''
   # This is how tall the score needs to be so the score needs to be as tall as
   # the highest note, that is the note with with a start+length larger than any
