@@ -1,5 +1,6 @@
 <html>
 <head>
+<script type="text/javascript" src="js/jquery.js"></script>
 <script type="text/javascript" src="js/piano.js"></script>
 
   <title>Play Piano</title>
@@ -247,6 +248,8 @@ span .keyname{
 <div id="user-controls">
     <button id="toggle-reading" onclick="toggleReading();">Start</button>
     <input id="bpm-input" value="60" style="width:4em;"></input>
+     <select id="song-selector" onchange="/*if (this.selectedIndex)*/ loadSong(this.selectedIndex);">
+    </select> 
 </div>
 
 <div id="score-container">
